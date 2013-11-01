@@ -1,0 +1,10 @@
+{
+        "name": "filefactoryWorking",
+        "hostprefix": "www.filefactory.com",
+        "displayname": "FileFactoryWorking",
+        "version": "1.0",
+        "authentication": "yes",
+        "module": "host.php",
+        "class": "SynoFileHostingFileFactoryWorking",
+        "description": "Only premium account supported."
+}
