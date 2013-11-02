@@ -75,7 +75,7 @@ class SynoFileHostingUptobox {
 		return $ret;
 	}
 	
-	public function getPremiumDownloadLink() {
+	private function getPremiumDownloadLink() {
 		
 		$ret = false;
 		$curl = curl_init();
