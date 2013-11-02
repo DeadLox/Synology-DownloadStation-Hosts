@@ -59,7 +59,7 @@ class SynoFileHostingOteupload {
 		
 		//echo $LoginInfo;
 		
-		//xfss is filefactory logged in cookie value
+		//xfss is oteupload logged in cookie value
 		if (FALSE != $LoginInfo && file_exists($this->OTE_COOKIE_JAR)) {
 			$cookieData = file_get_contents ($this->OTE_COOKIE_JAR);
 			if(strpos($cookieData,'xfss') !== false) {
