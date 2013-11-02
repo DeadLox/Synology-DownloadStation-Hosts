@@ -1,0 +1,10 @@
+{
+	"name": "wipfiles",
+	"hostprefix": "wipfiles.net",
+	"displayname": "Wipfiles",
+	"version": "1.0",
+	"authentication": "yes",
+	"module": "host.php",
+	"class": "SynoFileHostingWipfiles",
+	"description": "Only premium account supported."
+}
