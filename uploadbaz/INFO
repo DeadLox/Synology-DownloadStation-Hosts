@@ -1,0 +1,10 @@
+{
+	"name": "uploadbaz",
+	"hostprefix": "www.uploadbaz.com",
+	"displayname": "Uploadbaz",
+	"version": "1.0",
+	"authentication": "yes",
+	"module": "host.php",
+	"class": "SynoFileHostingUploadBaz",
+	"description": "Only premium account supported."
+}
