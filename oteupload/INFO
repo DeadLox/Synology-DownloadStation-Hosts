@@ -1,0 +1,10 @@
+{
+	"name": "oteupload",
+	"hostprefix": "www.oteupload.com",
+	"displayname": "Oteupload",
+	"version": "1.0",
+	"authentication": "yes",
+	"module": "host.php",
+	"class": "SynoFileHostingOteupload",
+	"description": "Only premium account supported."
+}
