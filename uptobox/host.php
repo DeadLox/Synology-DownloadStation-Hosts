@@ -12,7 +12,7 @@ class SynoFileHostingUptobox {
 	private $Password;
 	private $HostInfo;
 	private $UPTO_COOKIE_JAR = '/tmp/uptobox.cookie';
-	private $LOGIN_URL = "http://uptobox.com/login.html";
+	private $LOGIN_URL = "https://login.uptobox.com/";
 		
 	public function __construct($Url, $Username, $Password, $HostInfo) {
 		$this->Url = $Url;
@@ -26,7 +26,7 @@ class SynoFileHostingUptobox {
 	}
 	
 	public function GetDownloadInfo($ClearCookie) {
-		if($this->performLogin()==LOGIN_FAIL) {
+		if($this->performLogin()==$LOGIN_FAIL) {
 			$DownloadInfo = array();
 			$DownloadInfo[DOWNLOAD_ERROR] = ERR_REQUIRED_PREMIUM;
 			return $DownloadInfo;
@@ -39,19 +39,17 @@ class SynoFileHostingUptobox {
 		//Save cookie file
 		//op=login&redirect=http%3A%2F%2Fuptobox.com%2F&login=&password=&x=32&y=11
 		$PostData = array('op'=>'login',
-						'redirect'=>'http%3A%2F%2Fuptobox.com%2F',
+						'redirect'=>'https://login.uptobox.com/',
 						'login'=>$this->Username,
-						'password'=>$this->Password,
-						'x'=>'32',
-						'y'=>'11'
+						'password'=>$this->Password
 		);
-		$queryUrl = $this->LOGIN_URL;
+		$queryUrl = LOGIN_URL;
 		$PostData = http_build_query($PostData);
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+		//curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, FALSE);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $PostData);
 		curl_setopt($curl, CURLOPT_USERAGENT, DOWNLOAD_STATION_USER_AGENT);
-		curl_setopt($curl, CURLOPT_COOKIEJAR, $this->UPTO_COOKIE_JAR);
+		curl_setopt($curl, CURLOPT_COOKIEJAR, UPTO_COOKIE_JAR);
 		curl_setopt($curl, CURLOPT_HEADER, TRUE);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($curl, CURLOPT_URL, $queryUrl);
@@ -59,6 +57,7 @@ class SynoFileHostingUptobox {
 		curl_close($curl);
 		
 		//echo $LoginInfo;
+		
 		
 		//xfss is uptobox logged in cookie value
 		if (FALSE != $LoginInfo && file_exists($this->UPTO_COOKIE_JAR)) {
@@ -79,7 +78,7 @@ class SynoFileHostingUptobox {
 		
 		$ret = false;
 		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_USERAGENT, DOWNLOAD_STATION_USER_AGENT);
+		curl_setopt($curl, CURLOPT_USERAGENT, $DOWNLOAD_STATION_USER_AGENT);
 		curl_setopt($curl, CURLOPT_URL, $this->Url);
 		curl_setopt($curl, CURLOPT_COOKIEFILE, $this->UPTO_COOKIE_JAR);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
